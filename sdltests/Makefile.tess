@@ -1,0 +1,25 @@
+CC = arm-none-linux-gnueabi-gcc
+CXX = arm-none-linux-gnueabi-g++
+STRIP = arm-none-linux-gnueabi-strip
+NAME   = sdl_tess
+
+CFLAGS = -g -I../source -I$(PNDSDK)/usr/include
+LIBS   = -L../ -L$(PNDSDK)/usr/lib -lSDL13 -lGLES_CM -lIMGegl -lsrv_um -lglues
+ 
+LDFLAGS = -g
+ 
+OBJECTS = sdl_tess.o
+ 
+all:	$(NAME)
+ 
+$(NAME):$(OBJECTS)
+	$(CXX) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $@
+	$(STRIP) $(NAME)
+ 
+.cpp.o:
+	$(CXX) -c $(CFLAGS) $< -o $@
+ 
+clean:
+	rm -f $(OBJECTS) $(NAME)
+	rm -f sdl_tess
+ 
