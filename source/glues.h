@@ -128,27 +128,29 @@ typedef GLUnurbs GLUnurbsObj;
 /* Internal convenience typedefs */
 typedef void (APIENTRYP _GLUfuncptr)();
 
+#define GLdouble double
+
 GLAPI GLboolean APIENTRY gluCheckExtension(const GLubyte* extName, const GLubyte* extString);
-GLAPI void APIENTRY gluCylinder(GLUquadric* quad, GLfloat base, GLfloat top, GLfloat height, GLint slices, GLint stacks);
+GLAPI void APIENTRY gluCylinder(GLUquadric* quad, GLdouble base, GLdouble top, GLdouble height, GLint slices, GLint stacks);
 GLAPI void APIENTRY gluDeleteQuadric(GLUquadric* quad);
-GLAPI void APIENTRY gluDisk(GLUquadric* quad, GLfloat inner, GLfloat outer, GLint slices, GLint loops);
+GLAPI void APIENTRY gluDisk(GLUquadric* quad, GLdouble inner, GLdouble outer, GLint slices, GLint loops);
 GLAPI const GLubyte* APIENTRY gluErrorString(GLenum error);
 GLAPI const GLubyte * APIENTRY gluGetString(GLenum name);
-GLAPI void APIENTRY gluLookAt(GLfloat eyeX, GLfloat eyeY, GLfloat eyeZ, GLfloat centerX, GLfloat centerY, GLfloat centerZ, GLfloat upX, GLfloat upY, GLfloat upZ);
+GLAPI void APIENTRY gluLookAt(GLdouble eyeX, GLdouble eyeY, GLdouble eyeZ, GLdouble centerX, GLdouble centerY, GLdouble centerZ, GLdouble upX, GLdouble upY, GLdouble upZ);
 GLAPI GLUquadric* APIENTRY gluNewQuadric(void);
-GLAPI void APIENTRY gluOrtho2D(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top);
-GLAPI void APIENTRY gluPartialDisk(GLUquadric* quad, GLfloat inner, GLfloat outer, GLint slices, GLint loops, GLfloat start, GLfloat sweep);
-GLAPI void APIENTRY gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar);
-GLAPI void APIENTRY gluPickMatrix(GLfloat x, GLfloat y, GLfloat delX, GLfloat delY, GLint *viewport);
-GLAPI GLint APIENTRY gluProject(GLfloat objX, GLfloat objY, GLfloat objZ, const GLfloat *model, const GLfloat *proj, const GLint *view, GLfloat* winX, GLfloat* winY, GLfloat* winZ);
+GLAPI void APIENTRY gluOrtho2D(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top);
+GLAPI void APIENTRY gluPartialDisk(GLUquadric* quad, GLdouble inner, GLdouble outer, GLint slices, GLint loops, GLdouble start, GLdouble sweep);
+GLAPI void APIENTRY gluPerspective(GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar);
+GLAPI void APIENTRY gluPickMatrix(GLdouble x, GLdouble y, GLdouble delX, GLdouble delY, GLint *viewport);
+GLAPI GLint APIENTRY gluProject(GLdouble objX, GLdouble objY, GLdouble objZ, const GLdouble *model, const GLdouble *proj, const GLint *view, GLdouble* winX, GLdouble* winY, GLdouble* winZ);
 GLAPI void APIENTRY gluQuadricCallback(GLUquadric* quad, GLenum which, _GLUfuncptr CallBackFunc);
 GLAPI void APIENTRY gluQuadricDrawStyle(GLUquadric* quad, GLenum draw);
 GLAPI void APIENTRY gluQuadricNormals(GLUquadric* quad, GLenum normal);
 GLAPI void APIENTRY gluQuadricOrientation(GLUquadric* quad, GLenum orientation);
 GLAPI void APIENTRY gluQuadricTexture(GLUquadric* quad, GLboolean texture);
-GLAPI void APIENTRY gluSphere(GLUquadric* quad, GLfloat radius, GLint slices, GLint stacks);
-GLAPI GLint APIENTRY gluUnProject(GLfloat winX, GLfloat winY, GLfloat winZ, const GLfloat *model, const GLfloat *proj, const GLint *view, GLfloat* objX, GLfloat* objY, GLfloat* objZ);
-GLAPI GLint APIENTRY gluUnProject4(GLfloat winX, GLfloat winY, GLfloat winZ, GLfloat clipW, const GLfloat *model, const GLfloat *proj, const GLint *view, GLfloat nearVal, GLfloat farVal, GLfloat* objX, GLfloat* objY, GLfloat* objZ, GLfloat* objW);
+GLAPI void APIENTRY gluSphere(GLUquadric* quad, GLdouble radius, GLint slices, GLint stacks);
+GLAPI GLint APIENTRY gluUnProject(GLdouble winX, GLdouble winY, GLdouble winZ, const GLdouble *model, const GLdouble *proj, const GLint *view, GLdouble* objX, GLdouble* objY, GLdouble* objZ);
+GLAPI GLint APIENTRY gluUnProject4(GLdouble winX, GLdouble winY, GLdouble winZ, GLdouble clipW, const GLdouble *model, const GLdouble *proj, const GLint *view, GLdouble nearVal, GLdouble farVal, GLdouble* objX, GLdouble* objY, GLdouble* objZ, GLdouble* objW);
 GLAPI GLint APIENTRY gluScaleImage(GLenum format, GLsizei widthin,
                              GLsizei heightin, GLenum typein,
                              const void* datain, GLsizei widthout,
@@ -219,7 +221,7 @@ GLAPI GLint APIENTRY gluBuild2DMipmaps(GLenum target, GLint internalFormat,
 GLAPI void APIENTRY gluBeginPolygon(GLUtesselator* tess);
 GLAPI void APIENTRY gluDeleteTess(GLUtesselator* tess);
 GLAPI void APIENTRY gluEndPolygon(GLUtesselator* tess);
-GLAPI void APIENTRY gluGetTessProperty(GLUtesselator* tess, GLenum which, GLfloat* data);
+GLAPI void APIENTRY gluGetTessProperty(GLUtesselator* tess, GLenum which, GLdouble* data);
 GLAPI GLUtesselator* APIENTRY gluNewTess(void);
 GLAPI void APIENTRY gluNextContour(GLUtesselator* tess, GLenum type);
 GLAPI void APIENTRY gluTessBeginContour(GLUtesselator* tess);
@@ -227,9 +229,9 @@ GLAPI void APIENTRY gluTessBeginPolygon(GLUtesselator* tess, GLvoid* data);
 GLAPI void APIENTRY gluTessCallback(GLUtesselator* tess, GLenum which, _GLUfuncptr CallBackFunc);
 GLAPI void APIENTRY gluTessEndContour(GLUtesselator* tess);
 GLAPI void APIENTRY gluTessEndPolygon(GLUtesselator* tess);
-GLAPI void APIENTRY gluTessNormal(GLUtesselator* tess, GLfloat valueX, GLfloat valueY, GLfloat valueZ);
-GLAPI void APIENTRY gluTessProperty(GLUtesselator* tess, GLenum which, GLfloat data);
-GLAPI void APIENTRY gluTessVertex(GLUtesselator* tess, GLfloat* location, GLvoid* data);
+GLAPI void APIENTRY gluTessNormal(GLUtesselator* tess, GLdouble valueX, GLdouble valueY, GLdouble valueZ);
+GLAPI void APIENTRY gluTessProperty(GLUtesselator* tess, GLenum which, GLdouble data);
+GLAPI void APIENTRY gluTessVertex(GLUtesselator* tess, GLdouble* location, GLvoid* data);
 
 /* NurbsDisplay */
 /*      GLU_FILL */

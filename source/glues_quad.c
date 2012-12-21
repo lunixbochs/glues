@@ -152,8 +152,8 @@ GLAPI void APIENTRY gluQuadricDrawStyle(GLUquadric* qobj, GLenum drawStyle)
    qobj->drawStyle=drawStyle;
 }
 
-GLAPI void APIENTRY gluCylinder(GLUquadric* qobj, GLfloat baseRadius,
-                                GLfloat topRadius, GLfloat height,
+GLAPI void APIENTRY gluCylinder(GLUquadric* qobj, GLdouble baseRadius,
+                                GLdouble topRadius, GLdouble height,
                                 GLint slices, GLint stacks)
 {
    GLint i, j;
@@ -577,16 +577,16 @@ GLAPI void APIENTRY gluCylinder(GLUquadric* qobj, GLfloat baseRadius,
    }
 }
 
-GLAPI void APIENTRY gluDisk(GLUquadric* qobj, GLfloat innerRadius,
-                            GLfloat outerRadius, GLint slices, GLint loops)
+GLAPI void APIENTRY gluDisk(GLUquadric* qobj, GLdouble innerRadius,
+                            GLdouble outerRadius, GLint slices, GLint loops)
 {
    gluPartialDisk(qobj, innerRadius, outerRadius, slices, loops, 0.0, 360.0);
 }
 
-GLAPI void APIENTRY gluPartialDisk(GLUquadric* qobj, GLfloat innerRadius,
-                                   GLfloat outerRadius, GLint slices,
-                                   GLint loops, GLfloat startAngle,
-                                   GLfloat sweepAngle)
+GLAPI void APIENTRY gluPartialDisk(GLUquadric* qobj, GLdouble innerRadius,
+                                   GLdouble outerRadius, GLint slices,
+                                   GLint loops, GLdouble startAngle,
+                                   GLdouble sweepAngle)
 {
    GLint i, j;
    GLfloat sinCache[CACHE_SIZE];
@@ -995,7 +995,7 @@ GLAPI void APIENTRY gluPartialDisk(GLUquadric* qobj, GLfloat innerRadius,
    }
 }
 
-GLAPI void APIENTRY gluSphere(GLUquadric* qobj, GLfloat radius, GLint slices, GLint stacks)
+GLAPI void APIENTRY gluSphere(GLUquadric* qobj, GLdouble radius, GLint slices, GLint stacks)
 {
    GLint i, j;
    GLfloat sinCache1a[CACHE_SIZE];

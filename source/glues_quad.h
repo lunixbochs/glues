@@ -83,6 +83,8 @@
 #define GLU_OUTSIDE                        100020
 #define GLU_INSIDE                         100021
 
+#define GLdouble double
+
 #ifdef __cplusplus
 class GLUquadric;
 #else
@@ -106,16 +108,16 @@ GLAPI void APIENTRY gluQuadricNormals(GLUquadric* qobj, GLenum normals);
 GLAPI void APIENTRY gluQuadricTexture(GLUquadric* qobj, GLboolean textureCoords);
 GLAPI void APIENTRY gluQuadricOrientation(GLUquadric* qobj, GLenum orientation);
 GLAPI void APIENTRY gluQuadricDrawStyle(GLUquadric* qobj, GLenum drawStyle);
-GLAPI void APIENTRY gluCylinder(GLUquadric* qobj, GLfloat baseRadius,
-                                GLfloat topRadius, GLfloat height,
+GLAPI void APIENTRY gluCylinder(GLUquadric* qobj, GLdouble baseRadius,
+                                GLdouble topRadius, GLdouble height,
                                 GLint slices, GLint stacks);
-GLAPI void APIENTRY gluDisk(GLUquadric* qobj, GLfloat innerRadius,
-                            GLfloat outerRadius, GLint slices, GLint loops);
-GLAPI void APIENTRY gluPartialDisk(GLUquadric* qobj, GLfloat innerRadius,
-                                   GLfloat outerRadius, GLint slices,
-                                   GLint loops, GLfloat startAngle,
-                                   GLfloat sweepAngle);
-GLAPI void APIENTRY gluSphere(GLUquadric* qobj, GLfloat radius, GLint slices,
+GLAPI void APIENTRY gluDisk(GLUquadric* qobj, GLdouble innerRadius,
+                            GLdouble outerRadius, GLint slices, GLint loops);
+GLAPI void APIENTRY gluPartialDisk(GLUquadric* qobj, GLdouble innerRadius,
+                                   GLdouble outerRadius, GLint slices,
+                                   GLint loops, GLdouble startAngle,
+                                   GLdouble sweepAngle);
+GLAPI void APIENTRY gluSphere(GLUquadric* qobj, GLdouble radius, GLint slices,
                               GLint stacks);
 
 #ifdef __cplusplus

@@ -190,7 +190,7 @@ GLAPI void APIENTRY gluDeleteTess(GLUtesselator* tess)
    memFree(tess);
 }
 
-GLAPI void APIENTRY gluTessProperty(GLUtesselator* tess, GLenum which, GLfloat value)
+GLAPI void APIENTRY gluTessProperty(GLUtesselator* tess, GLenum which, GLdouble value)
 {
    GLenum windingRule;
 
@@ -235,7 +235,7 @@ GLAPI void APIENTRY gluTessProperty(GLUtesselator* tess, GLenum which, GLfloat v
 }
 
 /* Returns tessellator property */
-GLAPI void APIENTRY gluGetTessProperty(GLUtesselator* tess, GLenum which, GLfloat* value)
+GLAPI void APIENTRY gluGetTessProperty(GLUtesselator* tess, GLenum which, GLdouble* value)
 {
    switch (which)
    {
@@ -263,7 +263,7 @@ GLAPI void APIENTRY gluGetTessProperty(GLUtesselator* tess, GLenum which, GLfloa
    }
 }
 
-GLAPI void APIENTRY gluTessNormal(GLUtesselator* tess, GLfloat x, GLfloat y, GLfloat z)
+GLAPI void APIENTRY gluTessNormal(GLUtesselator* tess, GLdouble x, GLdouble y, GLdouble z)
 {
    tess->normal[0]=x;
    tess->normal[1]=y;
@@ -417,7 +417,7 @@ static int EmptyCache(GLUtesselator* tess)
 }
 
 
-void APIENTRY gluTessVertex(GLUtesselator* tess, GLfloat coords[3], void* data)
+void APIENTRY gluTessVertex(GLUtesselator* tess, GLdouble coords[3], void* data)
 {
    int i;
    int tooLarge=FALSE;

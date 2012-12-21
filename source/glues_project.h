@@ -58,22 +58,24 @@
    extern "C" {
 #endif
 
-GLAPI void APIENTRY gluOrtho2D(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top);
-GLAPI void APIENTRY gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar);
-GLAPI void APIENTRY gluLookAt(GLfloat eyex, GLfloat eyey, GLfloat eyez,
-                              GLfloat centerx, GLfloat centery, GLfloat centerz,
-                              GLfloat upx, GLfloat upy, GLfloat upz);
-GLAPI GLint APIENTRY gluProject(GLfloat objx, GLfloat objy, GLfloat objz,
-                                const GLfloat modelMatrix[16], const GLfloat projMatrix[16],
-                                const GLint viewport[4], GLfloat* winx, GLfloat* winy, GLfloat* winz);
-GLAPI GLint APIENTRY gluUnProject(GLfloat winx, GLfloat winy, GLfloat winz,
-                                  const GLfloat modelMatrix[16], const GLfloat projMatrix[16],
-                                  const GLint viewport[4], GLfloat* objx, GLfloat* objy, GLfloat* objz);
-GLAPI GLint APIENTRY gluUnProject4(GLfloat winx, GLfloat winy, GLfloat winz, GLfloat clipw,
-                                   const GLfloat modelMatrix[16], const GLfloat projMatrix[16],
+#define GLdouble double
+
+GLAPI void APIENTRY gluOrtho2D(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top);
+GLAPI void APIENTRY gluPerspective(GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar);
+GLAPI void APIENTRY gluLookAt(GLdouble eyex, GLdouble eyey, GLdouble eyez,
+                              GLdouble centerx, GLdouble centery, GLdouble centerz,
+                              GLdouble upx, GLdouble upy, GLdouble upz);
+GLAPI GLint APIENTRY gluProject(GLdouble objx, GLdouble objy, GLdouble objz,
+                                const GLdouble modelMatrix[16], const GLdouble projMatrix[16],
+                                const GLint viewport[4], GLdouble* winx, GLdouble* winy, GLdouble* winz);
+GLAPI GLint APIENTRY gluUnProject(GLdouble winx, GLdouble winy, GLdouble winz,
+                                  const GLdouble modelMatrix[16], const GLdouble projMatrix[16],
+                                  const GLint viewport[4], GLdouble* objx, GLdouble* objy, GLdouble* objz);
+GLAPI GLint APIENTRY gluUnProject4(GLdouble winx, GLdouble winy, GLdouble winz, GLdouble clipw,
+                                   const GLdouble modelMatrix[16], const GLdouble projMatrix[16],
                                    const GLint viewport[4], GLclampf nearVal, GLclampf farVal,
-                                   GLfloat* objx, GLfloat* objy, GLfloat* objz, GLfloat* objw);
-GLAPI void APIENTRY gluPickMatrix(GLfloat x, GLfloat y, GLfloat deltax, GLfloat deltay, GLint viewport[4]);
+                                   GLdouble* objx, GLdouble* objy, GLdouble* objz, GLdouble* objw);
+GLAPI void APIENTRY gluPickMatrix(GLdouble x, GLdouble y, GLdouble deltax, GLdouble deltay, GLint viewport[4]);
 
 #ifdef __cplusplus
 }

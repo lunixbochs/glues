@@ -46,7 +46,7 @@ static void __gluMakeIdentityf(GLfloat m[16])
 }
 
 GLAPI void APIENTRY
-gluOrtho2D(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top)
+gluOrtho2D(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top)
 {
     glOrthof(left, right, bottom, top, -1, 1);
 }
@@ -54,7 +54,7 @@ gluOrtho2D(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top)
 #define __glPi 3.14159265358979323846
 
 GLAPI void APIENTRY
-gluPerspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar)
+gluPerspective(GLdouble fovy, GLdouble aspect, GLdouble zNear, GLdouble zFar)
 {
     GLfloat m[4][4];
     GLfloat sine, cotangent, deltaZ;
@@ -101,9 +101,9 @@ static void cross(GLfloat v1[3], GLfloat v2[3], GLfloat result[3])
 }
 
 GLAPI void APIENTRY
-gluLookAt(GLfloat eyex, GLfloat eyey, GLfloat eyez, GLfloat centerx,
-          GLfloat centery, GLfloat centerz, GLfloat upx, GLfloat upy,
-          GLfloat upz)
+gluLookAt(GLdouble eyex, GLdouble eyey, GLdouble eyez, GLdouble centerx,
+          GLdouble centery, GLdouble centerz, GLdouble upx, GLdouble upy,
+          GLdouble upz)
 {
     GLfloat forward[3], side[3], up[3];
     GLfloat m[4][4];
@@ -142,8 +142,8 @@ gluLookAt(GLfloat eyex, GLfloat eyey, GLfloat eyez, GLfloat centerx,
     glTranslatef(-eyex, -eyey, -eyez);
 }
 
-static void __gluMultMatrixVecf(const GLfloat matrix[16], const GLfloat in[4],
-                                GLfloat out[4])
+static void __gluMultMatrixVecf(const GLdouble matrix[16], const GLdouble in[4],
+                                GLdouble out[4])
 {
     int i;
 
@@ -160,7 +160,7 @@ static void __gluMultMatrixVecf(const GLfloat matrix[16], const GLfloat in[4],
 ** Invert 4x4 matrix.
 ** Contributed by David Moore (See Mesa bug #6748)
 */
-static int __gluInvertMatrixf(const GLfloat m[16], GLfloat invOut[16])
+static int __gluInvertMatrixf(const GLdouble m[16], GLdouble invOut[16])
 {
     GLfloat inv[16], det;
     int i;
@@ -210,8 +210,8 @@ static int __gluInvertMatrixf(const GLfloat m[16], GLfloat invOut[16])
     return GL_TRUE;
 }
 
-static void __gluMultMatricesf(const GLfloat a[16], const GLfloat b[16],
-                               GLfloat r[16])
+static void __gluMultMatricesf(const GLdouble a[16], const GLdouble b[16],
+                               GLdouble r[16])
 {
     int i, j;
 
@@ -228,14 +228,14 @@ static void __gluMultMatricesf(const GLfloat a[16], const GLfloat b[16],
 }
 
 GLAPI GLint APIENTRY
-gluProject(GLfloat objx, GLfloat objy, GLfloat objz, 
-           const GLfloat modelMatrix[16], 
-           const GLfloat projMatrix[16],
+gluProject(GLdouble objx, GLdouble objy, GLdouble objz, 
+           const GLdouble modelMatrix[16], 
+           const GLdouble projMatrix[16],
            const GLint viewport[4],
-           GLfloat* winx, GLfloat* winy, GLfloat* winz)
+           GLdouble* winx, GLdouble* winy, GLdouble* winz)
 {
-    GLfloat in[4];
-    GLfloat out[4];
+    GLdouble in[4];
+    GLdouble out[4];
 
     in[0]=objx;
     in[1]=objy;
@@ -268,15 +268,15 @@ gluProject(GLfloat objx, GLfloat objy, GLfloat objz,
 }
 
 GLAPI GLint APIENTRY
-gluUnProject(GLfloat winx, GLfloat winy, GLfloat winz,
-             const GLfloat modelMatrix[16], 
-             const GLfloat projMatrix[16],
+gluUnProject(GLdouble winx, GLdouble winy, GLdouble winz,
+             const GLdouble modelMatrix[16], 
+             const GLdouble projMatrix[16],
              const GLint viewport[4],
-             GLfloat* objx, GLfloat* objy, GLfloat* objz)
+             GLdouble* objx, GLdouble* objy, GLdouble* objz)
 {
-    GLfloat finalMatrix[16];
-    GLfloat in[4];
-    GLfloat out[4];
+    GLdouble finalMatrix[16];
+    GLdouble in[4];
+    GLdouble out[4];
 
     __gluMultMatricesf(modelMatrix, projMatrix, finalMatrix);
     if (!__gluInvertMatrixf(finalMatrix, finalMatrix))
@@ -315,17 +315,17 @@ gluUnProject(GLfloat winx, GLfloat winy, GLfloat winz,
 }
 
 GLAPI GLint APIENTRY
-gluUnProject4(GLfloat winx, GLfloat winy, GLfloat winz, GLfloat clipw,
-              const GLfloat modelMatrix[16],
-              const GLfloat projMatrix[16],
+gluUnProject4(GLdouble winx, GLdouble winy, GLdouble winz, GLdouble clipw,
+              const GLdouble modelMatrix[16],
+              const GLdouble projMatrix[16],
               const GLint viewport[4],
               GLclampf nearVal, GLclampf farVal,
-              GLfloat *objx, GLfloat *objy, GLfloat *objz,
-              GLfloat *objw)
+              GLdouble *objx, GLdouble *objy, GLdouble *objz,
+              GLdouble *objw)
 {
-    GLfloat finalMatrix[16];
-    GLfloat in[4];
-    GLfloat out[4];
+    GLdouble finalMatrix[16];
+    GLdouble in[4];
+    GLdouble out[4];
 
     __gluMultMatricesf(modelMatrix, projMatrix, finalMatrix);
     if (!__gluInvertMatrixf(finalMatrix, finalMatrix))
@@ -363,7 +363,7 @@ gluUnProject4(GLfloat winx, GLfloat winy, GLfloat winz, GLfloat clipw,
 }
 
 GLAPI void APIENTRY
-gluPickMatrix(GLfloat x, GLfloat y, GLfloat deltax, GLfloat deltay,
+gluPickMatrix(GLdouble x, GLdouble y, GLdouble deltax, GLdouble deltay,
               GLint viewport[4])
 {
     if (deltax <= 0 || deltay <= 0)
