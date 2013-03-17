@@ -10,5 +10,9 @@ add_definitions(-D__USE_SDL_GLES__=1)
 aux_source_directory(source SRC)
 aux_source_directory(source/libtess TESS_SRC)
 aux_source_directory(libnurbs/*/ NURBS_SRC)
-add_library(GLUES_CM SHARED ${SRC} ${TESS_SRC} ${NURBS_SRC})
+add_library(GLU SHARED ${SRC} ${TESS_SRC} ${NURBS_SRC})
+
+if(CMAKE_SHARED_LIBRARY_SUFFIX MATCHES ".so")
+    set_target_properties(GLU PROPERTIES SUFFIX ".so.1")
+endif()
 
