@@ -39,12 +39,12 @@
       #define GLAPI GL_API
    #endif
 #elif defined (__QNXNTO__)
-   #include <GLES/gl.h>
-   #include <GLES/glext.h>
+   #include <GL/gl.h>
+   #include <GL/glext.h>
 #elif defined(_WIN32) && (defined(_M_IX86) || defined(_M_X64))
    /* mainly for PowerVR OpenGL ES 1.x win32 emulator */
-   #include <GLES\gl.h>
-   #include <GLES\glext.h>
+   #include <GL\gl.h>
+   #include <GL\glext.h>
    #undef APIENTRY
    #define APIENTRY
    #if defined(GLUES_EXPORTS)

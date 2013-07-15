@@ -48,7 +48,7 @@ static void __gluMakeIdentityf(GLfloat m[16])
 GLAPI void APIENTRY
 gluOrtho2D(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top)
 {
-    glOrthof(left, right, bottom, top, -1, 1);
+    glOrtho(left, right, bottom, top, -1, 1);
 }
 
 #define __glPi 3.14159265358979323846
