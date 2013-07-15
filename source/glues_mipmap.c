@@ -926,6 +926,10 @@ static int gluBuild2DMipmapLevelsCore(GLenum target, GLint internalFormat,
    GLint rowsize, padding;
    PixelStorageModes psm;
 
+   glPushClientAttrib(GL_CLIENT_PIXEL_STORE_BIT);
+   glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+   glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
+   glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
    assert(checkMipmapArgs(internalFormat,format,type)==0);
    assert(width>=1 && height>=1);
 
@@ -1301,6 +1305,7 @@ static int gluBuild2DMipmapLevelsCore(GLenum target, GLint internalFormat,
       free(dstImage);
    }
 
+   glPopClientAttrib();
    return 0;
 } /* gluBuild2DMipmapLevelsCore() */
 
