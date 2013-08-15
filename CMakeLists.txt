@@ -11,6 +11,7 @@ aux_source_directory(source SRC)
 aux_source_directory(source/libtess TESS_SRC)
 aux_source_directory(libnurbs/*/ NURBS_SRC)
 add_library(GLU SHARED ${SRC} ${TESS_SRC} ${NURBS_SRC})
+target_link_libraries(GLU GL m)
 
 if(CMAKE_SHARED_LIBRARY_SUFFIX MATCHES ".so")
     set_target_properties(GLU PROPERTIES SUFFIX ".so.1")
